@@ -1,13 +1,11 @@
 name: Fetch GeoRelays Data
 
+# Schedule dropped for D10 hardening because it pushed unpinned third-party data to main weekly. Dispatch manually if needed.
 on:
-  schedule:
-    - cron: '0 6 * * 0'
   workflow_dispatch:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   update-relay-data:
@@ -15,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
